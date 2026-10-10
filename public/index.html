@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0a0e" />
+  <meta name="description" content="MAVORA AI — استودیوی شخصی ساخت ویدیو با هوش مصنوعی از روی متن و عکس" />
+  <title>MAVORA AI | استودیوی ساخت ویدیو</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <div class="announcement"><span class="pulse-dot"></span> نسل بعدی داستان‌گویی تصویری <span class="announcement-sep">/</span> <span lang="en" dir="ltr">MAVORA CREATIVE LAB</span></div>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="خانه MAVORA AI"><img src="assets/logo.svg" alt="" /><span class="brand-text"><b>MAVORA<span class="brand-ai">.AI</span></b><small>CREATIVE STUDIO</small></span></a>
+      <nav class="desktop-nav" aria-label="منوی اصلی">
+        <a href="#studio" class="nav-active">استودیو</a>
+        <a href="#inspiration">ایده‌ها</a>
+        <a href="#library">آرشیو من</a>
+        <a href="#how-it-works">راهنما</a>
+      </nav>
+      <div class="header-actions">
+        <button class="status-pill" id="apiStatus" type="button" title="وضعیت اتصال سرویس"><i class="status-indicator"></i><span id="apiStatusText">در حال بررسی اتصال</span></button>
+        <a class="header-cta" href="#studio">شروع ساخت <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <div class="eyebrow"><span class="eyebrow-line"></span><span lang="en" dir="ltr">YOUR CREATIVE UNIVERSE</span><span class="eyebrow-square"></span></div>
+        <h1 id="hero-title">ایده‌ات رو بساز.<br><span class="gradient-text">بهش حرکت بده.</span></h1>
+        <p>فقط با چند کلمه یا یک عکس، ایده‌هایت را به ویدیوهای سینمایی تبدیل کن. دنیای خلاقیت تو از همین‌جا شروع می‌شود.</p>
+        <div class="hero-buttons">
+          <a href="#studio" class="btn btn-primary">ساخت اولین ویدیو <span aria-hidden="true">↖</span></a>
+          <a href="#inspiration" class="btn btn-outline">دیدن ایده‌ها <span aria-hidden="true">↙</span></a>
+        </div>
+        <div class="hero-metrics" aria-label="ویژگی‌های استودیو">
+          <div><strong>02</strong><span>روش ساخت</span></div>
+          <div class="metric-rule"></div>
+          <div><strong>4K</strong><span>حداکثر کیفیت مدل</span></div>
+          <div class="metric-rule"></div>
+          <div><strong>AI</strong><span>موتور هوشمند</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="اثر تصویری نمایشی و الهام‌بخش">
+        <img class="hero-image" src="assets/neon-city.svg" alt="تصویر هنری نمایشی شهر آینده با چراغ‌های نئونی" />
+        <div class="hero-shade"></div>
+        <div class="hero-art-top"><span class="camera-icon">✳</span><span>VISUAL STORYTELLING</span><span>001 / 004</span></div>
+        <div class="art-crosshair art-crosshair-one" aria-hidden="true">+</div>
+        <div class="art-crosshair art-crosshair-two" aria-hidden="true">+</div>
+        <div class="hero-art-bottom"><span class="hero-art-kicker">CREATE THE IMPOSSIBLE</span><strong>Beyond<br><i>imagination.</i></strong><span class="art-play">▶</span></div>
+        <div class="hero-art-corner"></div>
+      </div>
+    </section>
+
+    <section id="studio" class="work-section wrap" aria-labelledby="studio-title">
+      <div class="section-titlebar">
+        <div><div class="eyebrow section-eyebrow"><span class="eyebrow-line"></span> YOUR WORKSPACE / 01</div><h2 id="studio-title">استودیوی <em>خلق ویدیو</em></h2><p>تنظیمات را انتخاب کن و دستور ساخت را بفرست.</p></div>
+        <span class="section-index">01 — GENERATE</span>
+      </div>
+      <div id="setupNotice" class="setup-notice" hidden><div class="notice-icon">!</div><div><b>برای تولید واقعی، اتصال API لازم است</b><p>فعلاً می‌توانی طراحی و بخش‌های سایت را ببینی. برای ساخت ویدیو باید کلید Higgsfield را روی سرور تنظیم کنی.</p></div><button type="button" id="setupBtn" class="btn btn-small">روش اتصال ↖</button></div>
+      <div class="studio-layout">
+        <div class="creator-card panel">
+          <div class="card-head"><div><span class="mini-label">CREATOR PANEL</span><h3>شروع یک پروژه جدید</h3></div><span class="version-tag">MAVORA / V1</span></div>
+          <div class="mode-tabs" role="tablist" aria-label="انتخاب روش ساخت ویدیو">
+            <button id="textMode" role="tab" aria-selected="true" class="mode-tab active" type="button"><span class="tab-icon">✎</span> متن به ویدیو</button>
+            <button id="imageMode" role="tab" aria-selected="false" class="mode-tab" type="button"><span class="tab-icon">▣</span> عکس به ویدیو</button>
+          </div>
+          <form id="generateForm" novalidate>
+            <div class="field" id="uploadField" hidden><div class="label-row"><label for="imageInput">عکس شروع</label><span class="helper-label">JPG / PNG / WEBP</span></div>
+              <label class="upload-box" id="dropzone" for="imageInput"><input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" hidden /><img id="imagePreview" alt="پیش‌نمایش عکس انتخاب‌شده" hidden /><span id="uploadPlaceholder"><span class="upload-glyph">↥</span><strong>عکس را اینجا انتخاب کن</strong><small>یا فایل را بکش و رها کن · حداکثر ۱۰ مگابایت</small></span><span id="selectedFile" class="selected-file" hidden></span></label>
+            </div>
+            <div class="field"><div class="label-row"><label for="prompt">توضیح صحنه <span id="promptRequired" class="required">*</span></label><span class="helper-label">PROMPT</span></div>
+              <div class="textarea-holder"><textarea id="prompt" maxlength="2500" rows="5" placeholder="مثلاً: یک ماشین اسپرت مشکی زیر باران در خیابان‌های توکیو، نورهای نئون روی آسفالت منعکس می‌شوند، حرکت دوربین سینمایی..." required></textarea><div class="textarea-bottom"><span class="prompt-hint">✦ جزئیات نور، فضا و حرکت دوربین را بنویس</span><span id="charCount">0 / 2500</span></div></div>
+            </div>
+            <div class="quick-prompts" aria-label="پیشنهاد دستور آماده"><span>ایده سریع:</span><button type="button" class="chip" data-preset="car">ماشین سینمایی</button><button type="button" class="chip" data-preset="fashion">فشن</button><button type="button" class="chip" data-preset="nature">طبیعت</button></div>
+            <div class="settings-grid">
+              <div class="field"><label for="duration">مدت ویدیو</label><div class="select-shell"><select id="duration"><option value="5">۵ ثانیه</option><option value="8">۸ ثانیه</option><option value="10">۱۰ ثانیه</option><option value="15">۱۵ ثانیه</option></select></div></div>
+              <div class="field"><label for="resolution">کیفیت تصویر</label><div class="select-shell"><select id="resolution"><option value="480p">480p</option><option selected value="720p">720p · پیشنهادی</option><option value="1080p">1080p</option><option value="4k">4K · پرهزینه</option></select></div></div>
+              <div class="field" id="ratioField"><label for="aspectRatio">ابعاد تصویر</label><div class="select-shell"><select id="aspectRatio"><option value="16:9">16:9 · افقی</option><option value="9:16">9:16 · استوری</option><option value="1:1">1:1 · مربعی</option><option value="4:3">4:3</option><option value="3:4">3:4</option></select></div></div>
+              <div class="field audio-field"><label for="audio">ساخت صدا</label><div class="audio-control"><span><span class="audio-glyph">♫</span> همراه ویدیو</span><label class="switch"><input type="checkbox" id="audio" checked /><span class="switch-slider"></span></label></div></div>
+            </div>
+            <div class="cost-note"><span aria-hidden="true">ⓘ</span><span>هر ساخت از اعتبار API کم می‌کند؛ هزینه با مدل، کیفیت و مدت تغییر می‌کند. قبل از استفاده عمومی، محدودیت هزینه تنظیم کن.</span></div>
+            <button class="btn btn-generate" id="generateBtn" type="submit"><span id="generateLabel">✦ ساخت ویدیو با هوش مصنوعی</span><span class="btn-arrow" aria-hidden="true">↖</span></button>
+          </form>
+        </div>
+        <div class="preview-card panel">
+          <div class="preview-header"><div><span class="mini-label">LIVE PREVIEW</span><h3>خروجی پروژه</h3></div><span id="previewStatus" class="preview-status"><i></i> آماده شروع</span></div>
+          <div class="preview-screen" id="previewScreen">
+            <div class="preview-empty" id="previewEmpty"><div class="preview-glow"></div><div class="preview-grid"></div><div class="preview-symbol">M<span>✦</span></div><strong>جادوی تصویر از اینجا شروع می‌شود.</strong><p>بعد از ارسال دستور، وضعیت پروژه و ویدیوی آماده‌شده اینجا ظاهر می‌شود.</p><div class="preview-placeholder-bars"><span></span><span></span><span></span></div></div>
+            <div class="preview-loading" id="previewLoading" hidden><div class="loader-ring"><span>✦</span></div><strong id="loadingTitle">در حال آماده‌سازی ویدیو...</strong><p id="loadingText">درخواست تو به صف تولید ارسال شده است. این صفحه را باز بگذار یا بعداً از آرشیو پیگیری کن.</p><div class="fake-progress"><span></span></div></div>
+            <div class="preview-done" id="previewDone" hidden><video id="videoPlayer" controls playsinline preload="metadata"></video></div>
+            <div class="preview-error" id="previewError" hidden><div class="error-icon">!</div><strong>ویدیو آماده نشد</strong><p id="errorMessage"></p></div>
+          </div>
+          <div class="preview-footer"><div class="preview-info"><span class="preview-subtitle" id="previewSubtitle">هنوز ویدیویی ساخته نشده است</span><span class="preview-description" id="previewDescription">نتیجهٔ تولید اینجا نمایش داده می‌شود.</span></div><div class="preview-actions"><a id="openVideoBtn" class="mini-action" href="#" target="_blank" rel="noopener noreferrer" hidden>باز کردن ویدیو ↖</a><button type="button" class="mini-action danger" id="cancelBtn" hidden>لغو درخواست</button></div></div>
+          <div class="provider-line"><span class="provider-mark">✦</span> <span>ENGINE: SEEDANCE 2.0</span><span>·</span><span>CONNECTED VIA HIGGSFIELD API</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inspiration" class="inspiration-section wrap" aria-labelledby="inspiration-title"><div class="section-titlebar"><div><div class="eyebrow section-eyebrow"><span class="eyebrow-line"></span> CREATIVE INSPIRATION / 02</div><h2 id="inspiration-title">یک جرقه، <em>هزار داستان</em></h2><p>روی یکی از ایده‌ها بزن تا توضیح آماده‌اش وارد استودیو شود.</p></div><span class="section-index">02 — DISCOVER</span></div>
+      <div class="inspiration-grid">
+        <button type="button" class="inspo-card inspo-tall" data-preset="city"><img src="assets/neon-city.svg" alt="تصویر هنری شهر نئونی" /><span class="inspo-grain"></span><span class="inspo-top"><span>01 / CINEMATIC</span><span>↗</span></span><span class="inspo-bottom"><small>MOOD / NEO FUTURE</small><strong>شب‌های نئونی</strong><span>استفاده از ایده ↖</span></span></button>
+        <button type="button" class="inspo-card" data-preset="car"><img src="assets/desert-car.svg" alt="تصویر هنری خودرو در صحرا" /><span class="inspo-top"><span>02 / AUTOMOTIVE</span><span>↗</span></span><span class="inspo-bottom"><small>MOOD / GOLDEN HOUR</small><strong>تعقیب نور</strong><span>استفاده از ایده ↖</span></span></button>
+        <button type="button" class="inspo-card" data-preset="fashion"><img src="assets/fashion.svg" alt="تصویر هنری فشن استودیویی" /><span class="inspo-top"><span>03 / EDITORIAL</span><span>↗</span></span><span class="inspo-bottom"><small>MOOD / CAMPAIGN</small><strong>مد و حرکت</strong><span>استفاده از ایده ↖</span></span></button>
+        <button type="button" class="inspo-card" data-preset="nature"><img src="assets/space.svg" alt="تصویر هنری منظره فضایی" /><span class="inspo-top"><span>04 / FANTASY</span><span>↗</span></span><span class="inspo-bottom"><small>MOOD / DREAMSCAPE</small><strong>فراتر از زمین</strong><span>استفاده از ایده ↖</span></span></button>
+      </div>
+      <p class="visual-disclaimer">این تصاویر، آثار نمایشیِ طراحی‌شده برای رابط سایت هستند؛ نمونهٔ ویدیوی ساخته‌شده توسط API نیستند.</p>
+    </section>
+
+    <section id="library" class="library-section wrap" aria-labelledby="library-title"><div class="section-titlebar"><div><div class="eyebrow section-eyebrow"><span class="eyebrow-line"></span> YOUR CREATIONS / 03</div><h2 id="library-title">آرشیو <em>ویدیوهای من</em></h2><p>درخواست‌های قبلی و نتیجه‌های آماده‌شده را اینجا دنبال کن.</p></div><button class="refresh-btn" id="refreshLibrary" type="button" aria-label="بروزرسانی آرشیو">↻ بروزرسانی</button></div>
+      <div class="library-toolbar"><div class="filter-tabs" role="group" aria-label="فیلتر وضعیت پروژه"><button class="filter active" data-filter="all" type="button">همه</button><button class="filter" data-filter="completed" type="button">آماده‌شده</button><button class="filter" data-filter="active" type="button">در انتظار</button></div><span id="jobCount">۰ پروژه</span></div>
+      <div id="libraryItems" class="library-grid"><div class="empty-library"><span>▧</span><strong>هنوز پروژه‌ای ثبت نشده</strong><p>اولین ویدیوی خودت را از استودیو بساز.</p><a href="#studio">برو به استودیو ←</a></div></div>
+    </section>
+
+    <section id="how-it-works" class="steps-section wrap"><div class="steps-heading"><div class="eyebrow section-eyebrow"><span class="eyebrow-line"></span> SIMPLE BY DESIGN / 04</div><h2>از ایده تا ویدیو، <em>سه قدم.</em></h2></div><div class="steps-grid"><div><span>01</span><strong>ایده‌ات را توصیف کن</strong><p>متن بنویس یا عکسی برای متحرک‌سازی انتخاب کن.</p></div><div><span>02</span><strong>جزئیات را تنظیم کن</strong><p>مدت، کیفیت، نسبت تصویر و تولید صدا را مشخص کن.</p></div><div><span>03</span><strong>ساخت را دنبال کن</strong><p>درخواست را بفرست و نتیجه را از آرشیو باز کن.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a class="footer-brand" href="#top">MAVORA<span>.AI</span></a><span>استودیوی مستقل تولید ویدیو · نسخه آزمایشی شخصی</span><span>MADE FOR THE IMAGINATIVE © 2026</span></div></footer>
+
+  <div class="modal-backdrop" id="setupModal" hidden role="presentation"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="setupTitle"><button class="modal-close" id="closeSetup" aria-label="بستن" type="button">×</button><span class="modal-symbol">✦</span><h2 id="setupTitle">اتصال موتور ساخت ویدیو</h2><p>این نسخه آماده است به API رسمی Higgsfield وصل شود. برای شروع:</p><ol><li>در <a target="_blank" rel="noopener noreferrer" href="https://open.higgsfield.ai/api-keys">پنل Higgsfield API</a> حساب بساز، موجودی اضافه کن و کلید بگیر.</li><li>فایل <code>.env.example</code> را به <code>.env</code> تبدیل کن و کلید کامل را در <code>HF_API_KEY</code> قرار بده.</li><li>سرور را اجرا یا مجدداً راه‌اندازی کن. کلید را در کد سایت یا مرورگر نگذار.</li></ol><div class="modal-alert">اشتراک عادی Higgsfield با اعتبار API جداست. بدون کلید و اعتبار، ساخت واقعی ویدیو انجام نمی‌شود.</div><button class="btn btn-primary modal-ok" id="okSetup" type="button">متوجه شدم ↖</button></div></div>
+  <div class="modal-backdrop" id="loginModal" hidden role="presentation"><form class="modal login-modal" id="loginForm" role="dialog" aria-modal="true" aria-labelledby="loginTitle"><span class="modal-symbol">◇</span><h2 id="loginTitle">ورود به استودیو</h2><p>این نسخه شخصی است. برای محافظت از اعتبار API رمز مدیر را وارد کن.</p><label for="password">رمز مدیر</label><input id="password" type="password" autocomplete="current-password" required placeholder="رمز ورود" /><p class="login-error" id="loginError" aria-live="polite"></p><button class="btn btn-primary modal-ok" type="submit">ورود به استودیو ←</button></form></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
